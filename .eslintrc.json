@@ -1,11 +1,22 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "node": true
+  },
   "extends": [
-    "next/core-web-vitals",
-    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:react/recommended",
     "plugin:prettier/recommended"
   ],
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": ["react"],
   "rules": {
     "prettier/prettier": [
       "error",
@@ -13,25 +24,21 @@
         "endOfLine": "auto"
       }
     ],
-    "@typescript-eslint/no-unused-vars": "error",
-    "@typescript-eslint/no-explicit-any": "error",
-    "@typescript-eslint/quotes": [
+    "no-unused-vars": "error",
+    "no-console": "warn",
+    "quotes": [
       "error",
       "single",
-      {
-        "avoidEscape": true,
-        "allowTemplateLiterals": true
-      }
+      { "avoidEscape": true, "allowTemplateLiterals": true }
     ],
-    "no-trailing-spaces": [2, { "skipBlankLines": false }],
+    "no-trailing-spaces": ["error", { "skipBlankLines": false }],
     "no-multiple-empty-lines": ["error", { "max": 1, "maxBOF": 1 }],
     "object-curly-spacing": ["error", "always"],
-    "comma-spacing": [2, { "before": false, "after": true }],
+    "comma-spacing": ["error", { "before": false, "after": true }],
     "arrow-spacing": ["error", { "before": true, "after": true }],
     "space-infix-ops": ["error", { "int32Hint": false }],
-    "space-after-keywords": "off",
-    "keyword-spacing": [2, { "before": true, "after": true }],
-    "react/jsx-indent": [2, 2, { "indentLogicalExpressions": true }],
+    "keyword-spacing": ["error", { "before": true, "after": true }],
+    "react/jsx-indent": ["error", 2, { "indentLogicalExpressions": true }],
     "arrow-body-style": ["error", "as-needed"],
     "padded-blocks": ["error", "never"],
     "semi": ["error", "never"],
@@ -44,6 +51,12 @@
         "html": true
       }
     ],
-    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }]
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
+    "react/prop-types": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
